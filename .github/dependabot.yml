@@ -1,15 +1,19 @@
----
 version: 2
 updates:
-  - package-ecosystem: "github-actions"
-    directory: "/"
-    schedule:
-      interval: "daily"
-  - package-ecosystem: npm
-    directory: "/javascript"
-    schedule:
-      interval: daily
-  - package-ecosystem: bundler
-    directory: "/ruby"
-    schedule:
-      interval: weekly
+- package-ecosystem: bundler
+  directory: "/ruby"
+  schedule:
+    interval: daily
+    time: "22:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: business
+    versions:
+    - 2.1.0
+    - 2.2.0
+- package-ecosystem: npm
+  directory: "/javascript"
+  schedule:
+    interval: daily
+    time: "22:00"
+  open-pull-requests-limit: 10
